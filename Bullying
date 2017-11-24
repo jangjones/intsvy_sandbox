@@ -12,7 +12,7 @@ ST038 <- pisa.select.merge(folder=pufdir, student.file="CY6_MS_CMB_STU_QQ2.sav",
 summary(ST038)
 str(ST038)    
 
-#Store numbers as levels in a factor 
+#Store ordinal numbers as levels in a factor 
 ST038$ST038Q03NA <- factor(ST038$ST038Q03NA)  
 ST038$ST038Q04NA <- factor(ST038$ST038Q04NA)  
 ST038$ST038Q05NA <- factor(ST038$ST038Q05NA)  
