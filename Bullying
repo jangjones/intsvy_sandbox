@@ -1,0 +1,27 @@
+#Install and load libraries
+library(intsvy)
+library(ggplot2)
+
+pufdir <- "C:/Users/adamg/Documents/SAS University Edition/PUF15 SPSS/"
+
+#Create a dataframe from selected questionnaire variables
+ST038 <- pisa.select.merge(folder=pufdir, student.file="CY6_MS_CMB_STU_QQ2.sav", student=c("ST038Q01NA", "ST038Q02NA", "ST038Q03NA", "ST038Q04NA", "ST038Q05NA", "ST038Q06NA", "ST038Q07NA", "ST038Q08NA"))
+
+#Overview of summary details and structure
+summary(ST038)
+str(ST038)    
+
+# Store numbers as levels in a factor 
+ST038$ST038Q03NA <- factor(ST038$ST038Q03NA)  
+ST038$ST038Q04NA <- factor(ST038$ST038Q04NA)  
+ST038$ST038Q05NA <- factor(ST038$ST038Q05NA)  
+ST038$ST038Q06NA <- factor(ST038$ST038Q06NA)  
+ST038$ST038Q07NA <- factor(ST038$ST038Q07NA)  
+ST038$ST038Q08NA <- factor(ST038$ST038Q08NA) 
+
+#Check new summary details and structure
+summary(ST038)
+str(ST038)    
+
+
+
