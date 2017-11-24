@@ -28,3 +28,24 @@ ddat <- ddat[-grep(rownames(ddat),pattern="(", fixed=TRUE),]
 # plot it with the likert package
 likert.bar.plot(likert(summary=ddat),  plot.percent.neutral=FALSE) + ggtitle("Sense of Belonging - Feel Happy at School")
 
+
+
+OR
+
+
+
+ ## Filtering Korea, Japan, China, USA result
+student2012_KJCU <- student2012[student2012$CNT %in% c("Korea","Japan","China-Shanghai","United States of America"),]
+
+student2012_sub <- student2012_KJCU[,substr(names(student2012_KJCU), 1, 5)  == "ST87Q"]
+student2012_sub <- rename(student2012_sub, c(ST87Q01="Sense of Belonging - Feel Like Outsider",
+  ST87Q02="Sense of Belonging - Make Friends Easily",
+  ST87Q03="Sense of Belonging - Belong at School",
+  ST87Q04="Sense of Belonging - Feel Awkward at School",
+  ST87Q05="Sense of Belonging - Liked by Other Students",
+  ST87Q06="Sense of Belonging - Feel Lonely at School",
+  ST87Q07="Sense of Belonging - Feel Happy at School",
+  ST87Q08="Sense of Belonging - Things Are Ideal at School",
+  ST87Q09="Sense of Belonging - Satisfied at School")) 
+s_sub <- likert(student2012_sub, grouping = student2012_KJCU$CNT)
+plot(s_sub)
