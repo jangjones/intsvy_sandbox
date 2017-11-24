@@ -2,6 +2,7 @@
 library(intsvy)
 library(ggplot2)
 
+#Set location of downloaded OECD PISA public use file (SPSS version) and name this folder
 pufdir <- "C:/Users/adamg/Documents/SAS University Edition/PUF15 SPSS/"
 
 #Create a dataframe from selected questionnaire variables
