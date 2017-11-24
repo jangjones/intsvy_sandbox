@@ -1,0 +1,10 @@
+# Activate the `foreign` library
+library(foreign)
+
+# Set the working directory
+setwd("C:/Users/adamg/Documents/SAS University Edition/PUF15 SPSS/")
+
+# Read the SPSS data
+QQ2 <- read.spss("CY6_MS_CMB_STU_QQ2.sav", to.data.frame=TRUE, use.value.labels=FALSE)
+QQQ <- read.spss("CY6_MS_CMB_STU_QQQ.sav", to.data.frame=TRUE, use.value.labels=FALSE)
+
