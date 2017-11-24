@@ -1,0 +1,30 @@
+library(ggplot2)
+library(reshape2)
+library(likert)
+library(intsvy)
+ 
+# read students data from PISA 2012
+# directly from URL
+con <- url("http://beta.icm.edu.pl/PISAcontest/data/student2012.rda")
+load(con)
+ 
+# variable ST62Q13 codes familiarity with 'Declarative Fraction'
+tab <- pisa.table(variable="ST62Q13", by="ST04Q01", data=student2012)
+ptab <- acast(tab, ST04Q01~ST62Q13, value.var="Percentage")
+ddat <- data.frame(Item=rownames(ptab), ptab)
+ 
+# plot it with the likert package
+likert.bar.plot(likert(summary=ddat), center=2) + ggtitle("Declarative Fraction") + theme_bw()
+
+# variable ST87Q07 codes 'Sense of Belonging - Feel Happy at School'
+# pisa.table calculates weighted fractions and it's standard errors
+tab <- pisa.table(variable="ST87Q07", by="CNT", data=student2012)
+ptab <- acast(tab, CNT~ST87Q07, value.var="Percentage")
+ 
+# need to add fake column with 0, otherwise likert.bar.plot will fail
+ddat <- data.frame(Item=rownames(ptab), cbind(ptab[,4:3], 0, ptab[,2:1]))
+ddat <- ddat[-grep(rownames(ddat),pattern="(", fixed=TRUE),]
+ 
+# plot it with the likert package
+likert.bar.plot(likert(summary=ddat),  plot.percent.neutral=FALSE) + ggtitle("Sense of Belonging - Feel Happy at School")
+
