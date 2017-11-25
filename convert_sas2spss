@@ -1,0 +1,6 @@
+install.packages("haven")
+library("haven")
+
+setwd("C:/Users/adamg/Documents/SAS University Edition/myfolders/PUF2015_SAS/")
+tmp <- read_sas("cy6_ms_cmb_stu_qall.sas7bdat")
+write_sav(tmp, "cy6_ms_cmb_stu_qall.sav")
