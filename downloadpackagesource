@@ -1,0 +1,7 @@
+# Download the source code .tar.gz for the 'intsvy' package into the working directory
+download.packages(pkgs = "intsvy", destdir = ".", type = "source")  
+
+# Unpack this
+untar("intsvy_2.1.tar.gz", list=TRUE, files = "/intsvy.csv")
+
+# Delve into the new 'intsvy' folder in the working directory to see the code for each .r file
