@@ -1,1 +1,3 @@
-read.spss(files.all[["School"]]
+vars_selected <- c("BELONG", "ANXTEST", "COBN_F", "COBN_M", "COBN_S", "CULTPOSS", "CURSUPP", "DURECEC", "DISCLISCI", "ESCS", "ENTUSE", "EPIST", "HOMEPOS", "INSTSCIE", "LANGN", "MOTIVAT", "ST004D01T", "USESCH", "WEALTH")
+vars_all <- c("CNT", unique(grep("^PV|^W_F|ID$|STD$", names(pisa.school), value=T)), unique(vars_selected))
+P15vars <- read.spss("cy6_ms_cmb_stu_qall.sav"[[vars_all]], to.data.frame=TRUE, use.value.labels=FALSE)
