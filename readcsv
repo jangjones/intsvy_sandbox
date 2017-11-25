@@ -1,5 +1,16 @@
-# Activate the `foreign` library
+# Set working directory to where the slimmed-down, no-string version of the database is kept
+setwd("C:/Users/adamg/Documents/SAS University Edition/myfolders/PISAdatasets/")
+
+# Import CSV file as a data frame 
+STU <- read.csv("fifteen_nostrings.csv")
+
+# Load 'foreign' library for manipulating SPSS files
 library(foreign)
+
+# Convert the CSV file to SPSS '.sav' file, ready for use by the intsvy package
+write.foreign(STU, "STU_data.sav", "STU_code.sav", package="SPSS")
+
+# --------------------------------------------------------------------------------
 
 # Set the working directory
 setwd("C:/Users/adamg/Documents/SAS University Edition/PUF15 SPSS/")
